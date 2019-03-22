@@ -12,7 +12,8 @@ const trabajosSchema = new Schema({
   detallesEmpresa: String,
   nomEmpresa: String,
   sitio: String,
-  image: {type:String, default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNOgd1j1aOvHf-wmpZjxei0YTNTXJZ0kuq9BX5QmEG3HYHLdwcng'}
+  image: {type:String, default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNOgd1j1aOvHf-wmpZjxei0YTNTXJZ0kuq9BX5QmEG3HYHLdwcng'},
+  owner: {type: Schema.Types.ObjectId, ref:'User'}
 },{
   timestamps:{
     createdAt:"created_at",
