@@ -26,6 +26,7 @@ router.post('/trabajos', (req, res, next)=>{
         detallesEmpresa: req.body.detallesEmpresa,
         nomEmpresa: req.body.nomEmpresa,
         sitio: req.body.sitio,
+        owner: req.user._id
         })
         .then(response=>{
             res.json(response)
