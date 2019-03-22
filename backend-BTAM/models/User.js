@@ -5,6 +5,7 @@ const userSchema = new Schema ({
   nombre: String,
   apellido: String,
   email: String,
+  username:String,
   password: String,
   ubicacion: String,
   imagen: {type:String, default: 'https://www.r-users.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png'},
