@@ -15,7 +15,7 @@ class TrabajosDetails extends Component {
     }
     getSingleTrabajo= () =>{
         const {params} = this.props.match
-        axios.get (`http://localhost:3005/api/trabajos/${params.id}`)
+        axios.get (`${process.env.REACT_APP_API_SERVER}${params.id}`)
         .then (responseFromApi=>{
             const theTrabajo = responseFromApi.data
             this.setState(theTrabajo)
@@ -35,7 +35,7 @@ class TrabajosDetails extends Component {
 
     deleteTrabajo =(id)=>{
         const {params} = this.props.match;
-        axios.delete(`http://localhost:3005/api/trabajos/${params.id}`)
+        axios.delete(`${process.env.REACT_APP_API_SERVER}${params.id}`)
         .then ( responseFromApi=>{
             this.props.history.push ('/trabajos')
         })

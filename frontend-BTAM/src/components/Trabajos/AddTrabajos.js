@@ -32,7 +32,7 @@ class AddTrabajos extends Component{
             const nomEmpresa =this.state.nomEmpresa
             const sitio =this.state.sitio
 
-            axios.post('http://localhost:3005/api/trabajos',
+            axios.post(process.env.REACT_APP_API_SERVER,
             {puesto,
             ubicacion,
             horario,

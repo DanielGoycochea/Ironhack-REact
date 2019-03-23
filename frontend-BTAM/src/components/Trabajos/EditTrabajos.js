@@ -32,7 +32,7 @@ class EditTrabajos extends Component{
 
             event.preventDefault()
 
-            axios.put(`http://localhost:3005/api/trabajos/${this.props.theTrabajos._id}`,{
+            axios.put(`${process.env.REACT_APP_API_SERVER}${this.props.theTrabajos._id}`,{
                 puesto,
                 ubicacion,
                 horario,
