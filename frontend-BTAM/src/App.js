@@ -7,22 +7,86 @@ import TrabajosList from './components/Trabajos/TrabajosList';
 import TrabajosDetails from './components/Trabajos/TrabajosDetails'
 import {Switch, Route} from 'react-router-dom'
 import Signup from './components/auth/Signup';
+import AuthService from './components/auth/auth-service'
+import Login from './components/auth/Login';
 
 
 
 class App extends Component {
+        constructor(props){
+          super(props)
+          this.state = {
+            loggedInUser: null
+          }
+          this.service = new AuthService()
+        }
+
+        fetchUser(){
+          if(this.state.loggedInUser==null){
+            this.service.loggedin ()
+            .then(response=>{
+              this.setState({
+                loggedInUser: response
+              })
+            })
+            .catch( err =>{
+              this.setState({
+                loggedInUser: false
+              })
+            })
+          }
+        }
+
+        getTheUser= (userObj) => {
+          this.setState({
+            loggedInUser: userObj
+          })
+        }
+
+
+
+
+
+
   render() {
-    return (
-      <div className="App">
-        <NavBar/>
-        <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/signup' component = {Signup}/>
-          <Route exact path="/trabajos" component={TrabajosList}/>
-          <Route exact path="/trabajos/:id" component={TrabajosDetails} />
-        </Switch>
-      </div>
-    );
+    this.fetchUser()
+    if(this.state.loggedInUser){
+      return (
+        <div className="App">
+         <NavBar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+         <Switch>
+           <Route exact path='/' component={Home}/>
+           <Route exact path="/trabajos" component={TrabajosList}/>
+           <Route exact path="/trabajos/:id" component={TrabajosDetails} />
+         </Switch>
+       </div>
+      )
+    } else {
+      return (
+        <div className="App">
+         <NavBar userInSession={this.state.loggedInUser} />
+         <Switch>
+           <Route exact path='/' component={Home}/>
+           <Route exact path='/signup'  render={() => <Signup getUser={this.getTheUser}/>}/>
+           <Route exact path='/login'   render={() => <Login getUser={this.getTheUser}/>}/>
+           <Route exact path="/trabajos" component={TrabajosList}/>
+           <Route exact path="/trabajos/:id" component={TrabajosDetails} />
+         </Switch>
+       </div>
+      )
+    }
+
+    // return (
+    //   <div className="App">
+    //     <NavBar userInSession={this.state.loggedInUser} />
+    //     <Switch>
+    //       <Route exact path='/' component={Home}/>
+    //       <Route exact path='/signup' component = {Signup}/>
+    //       <Route exact path="/trabajos" component={TrabajosList}/>
+    //       <Route exact path="/trabajos/:id" component={TrabajosDetails} />
+    //     </Switch>
+    //   </div>
+    // );
   }
 }
 

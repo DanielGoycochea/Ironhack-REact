@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import {Button, Carousel, Row, Col} from 'react-bootstrap';
+import Login from './auth/Login'
 
 
 
@@ -66,10 +67,11 @@ const Home=() =>{
         <Link to = '/trabajos'>TRabjaos</Link>
         </Col>
         <Col xs={12} md={6}>
-
+            <Login></Login>
     </Col>
   </Row>
   </div>
+        
       </div>
      
      
