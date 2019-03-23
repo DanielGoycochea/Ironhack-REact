@@ -1,5 +1,5 @@
 import React from 'react'
-// import {Link} from "react-router-dom"
+ import {Link} from "react-router-dom"
 import {Nav,Navbar, Form, Button} from 'react-bootstrap'
 
 
@@ -8,7 +8,7 @@ const NavBar =() =>{
      
            <div className= "">
               <Navbar className="Navbar" expand="lg">
-                <Navbar.Brand href="#home">BTAM</Navbar.Brand>
+                <Navbar.Brand ><Link to = '/'>BTAM</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

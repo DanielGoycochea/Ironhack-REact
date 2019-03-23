@@ -1,11 +1,11 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import {Form, Button, Carousel, Row, Col} from 'react-bootstrap';
-import AddTrabajos from "./Trabajos/AddTrabajos";
+import {Button, Carousel, Row, Col} from 'react-bootstrap';
 
 
 
-const NavBar =() =>{
+
+const Home=() =>{
     return(
      
            <div className= "">
@@ -65,39 +65,16 @@ const NavBar =() =>{
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dolorum provident quas necessitatibus cum placeat itaque sequi ullam facilis accusantium. Ipsa nam aut dolorum in quis alias neque doloremque nemo.</p>
         <Link to = '/trabajos'>TRabjaos</Link>
         </Col>
-        <Col xs={12} md={6}><Form>
-    <Form.Group controlId="formBasicEmail">
-        <Form.Label>Correo electronico</Form.Label>
-        <Form.Control type="email" placeholder="Ingresa Correo electronico" />
-        <Form.Text className="text-muted">
-        We'll never share your email with anyone else.
-        </Form.Text>
-    </Form.Group>
+        <Col xs={12} md={6}>
 
-    <Form.Group controlId="formBasicPassword">
-        <Form.Label>Contraseña</Form.Label>
-        <Form.Control type="password" placeholder="Ingresa Contraseña" />
-    </Form.Group>
-    <Form.Group controlId="formBasicChecbox">
-        <Form.Check type="checkbox" label="Check me out" />
-    </Form.Group>
-    <Button variant="primary" type="submit">
-        Submit
-    </Button>
-    </Form>
     </Col>
   </Row>
   </div>
-
-
-
-
-            <AddTrabajos></AddTrabajos>
-           </div>
+      </div>
      
      
     )
 }
 
 
-export default NavBar;
+export default Home

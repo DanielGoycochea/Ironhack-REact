@@ -6,6 +6,7 @@ import Home from './components/Home'
 import TrabajosList from './components/Trabajos/TrabajosList';
 import TrabajosDetails from './components/Trabajos/TrabajosDetails'
 import {Switch, Route} from 'react-router-dom'
+import Signup from './components/auth/Signup';
 
 
 
@@ -16,6 +17,7 @@ class App extends Component {
         <NavBar/>
         <Switch>
           <Route exact path='/' component={Home}/>
+          <Route exact path='/signup' component = {Signup}/>
           <Route exact path="/trabajos" component={TrabajosList}/>
           <Route exact path="/trabajos/:id" component={TrabajosDetails} />
         </Switch>
