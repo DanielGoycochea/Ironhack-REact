@@ -15,7 +15,7 @@ const passport     = require('passport')
 require('./config/passport')
 
 mongoose
-  .connect('mongodb://localhost/backend-btam', {useNewUrlParser: true})
+  .connect(process.env.MONGODBCLOUD, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
