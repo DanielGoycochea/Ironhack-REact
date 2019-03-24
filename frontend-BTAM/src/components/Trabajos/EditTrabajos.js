@@ -42,7 +42,7 @@ class EditTrabajos extends Component{
                 detallesEmpresa,
                 nomEmpresa,
                 sitio
-            })
+            }, {withCredentials:true})
             .then(()=>{
                 this.props.getTheTrabajo();
                 alert('cambio realizado')

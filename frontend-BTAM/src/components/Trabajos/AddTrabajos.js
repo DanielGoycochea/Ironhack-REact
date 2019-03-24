@@ -41,7 +41,7 @@ class AddTrabajos extends Component{
             sueldo,
             detallesEmpresa,
             nomEmpresa,
-            sitio})
+            sitio}, {withCredentials:true})
             .then(()=>{
                 this.setState({
                     puesto: '',

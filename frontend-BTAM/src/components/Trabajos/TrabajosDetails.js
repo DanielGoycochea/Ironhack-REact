@@ -15,7 +15,7 @@ class TrabajosDetails extends Component {
     }
     getSingleTrabajo= () =>{
         const {params} = this.props.match
-        axios.get (`${process.env.REACT_APP_API_SERVER}${params.id}`)
+        axios.get (`${process.env.REACT_APP_API_SERVER}${params.id}`, {withCredentials:true})
         .then (responseFromApi=>{
             const theTrabajo = responseFromApi.data
             this.setState(theTrabajo)
@@ -35,13 +35,25 @@ class TrabajosDetails extends Component {
 
     deleteTrabajo =(id)=>{
         const {params} = this.props.match;
-        axios.delete(`${process.env.REACT_APP_API_SERVER}${params.id}`)
+        axios.delete(`${process.env.REACT_APP_API_SERVER}${params.id}`, {withCredentials:true})
         .then ( responseFromApi=>{
             this.props.history.push ('/trabajos')
         })
         .catch((err)=>{
             console.log(err)
         })
+    }
+
+    ownershipCheck = (trabajo) => {
+        if(this.props.loggedInUser && trabajo.owner === this.props.loggedInUser._id){
+            console.log(trabajo)
+            return (
+                <div>
+                    <div>{this.renderEditForm()}</div>
+                    <button onClick={()=>this.deleteTrabajo(this.state._id)}>Borrar</button>
+                </div>
+            )
+        }
     }
 
 
@@ -58,9 +70,11 @@ class TrabajosDetails extends Component {
               <p>{this.state.nomEmpresa}</p>
               <p>{this.state.detallesEmpresa}</p>
               <p>{this.state.sitio}</p>
+              <div >{this.ownershipCheck(this.state)}aqui
+                </div>
 
-              <div>{this.renderEditForm()}</div>
-              <button onClick={() => this.deleteTrabajo(this.state._id)}>Delete TRabajo</button>
+              {/* <div>{this.renderEditForm()}</div>
+              <button onClick={() => this.deleteTrabajo(this.state._id)}>Delete TRabajo</button> */}
               <Link to={'/trabajos'}>REgresar</Link>
            </div>
         )

@@ -12,7 +12,7 @@ class TrabajosList extends Component{
         this.state={listOfTrabajos:[]}
     }
     getAllTrabajos= () =>{
-        axios.get(process.env.REACT_APP_API_SERVER)
+        axios.get(process.env.REACT_APP_API_SERVER, {withCredentials:true})
         .then (responsefromApi=>{
             this.setState({
                 listOfTrabajos: responsefromApi.data

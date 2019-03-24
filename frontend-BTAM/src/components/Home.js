@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import {Button, Carousel, Row, Col} from 'react-bootstrap';
 import Login from './auth/Login'
+import AddTrabajos from './Trabajos/AddTrabajos'
 
 
 
@@ -71,7 +72,7 @@ const Home=() =>{
     </Col>
   </Row>
   </div>
-        
+        <AddTrabajos></AddTrabajos>
       </div>
      
      
