@@ -9,6 +9,7 @@ import {Switch, Route} from 'react-router-dom'
 import Signup from './components/auth/Signup';
 import AuthService from './components/auth/auth-service'
 import Login from './components/auth/Login';
+import ProtectedRoute from './components/auth/protected-route'
 
 
 
@@ -55,9 +56,9 @@ class App extends Component {
         <div className="App">
          <NavBar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
          <Switch>
-           <Route exact path='/' component={Home}/>
-           <Route exact path="/trabajos" component={TrabajosList}/>
-           <Route exact path="/trabajos/:id" component={TrabajosDetails} />
+           <Route user={this.state.loggedInUser} exact path='/' component={Home}/>
+           <ProtectedRoute user={this.state.loggedInUser}  exact path="/trabajos" component={TrabajosList}/>
+           <ProtectedRoute user={this.state.loggedInUser}  exact path="/trabajos/:id" component={TrabajosDetails} />
          </Switch>
        </div>
       )
@@ -69,24 +70,14 @@ class App extends Component {
            <Route exact path='/' component={Home}/>
            <Route exact path='/signup'  render={() => <Signup getUser={this.getTheUser}/>}/>
            <Route exact path='/login'   render={() => <Login getUser={this.getTheUser}/>}/>
-           <Route exact path="/trabajos" component={TrabajosList}/>
-           <Route exact path="/trabajos/:id" component={TrabajosDetails} />
+           <Route   exact path="/trabajos" component={TrabajosList}/>
+           <Route   exact path="/trabajos/:id" component={TrabajosDetails} />
          </Switch>
        </div>
       )
     }
 
-    // return (
-    //   <div className="App">
-    //     <NavBar userInSession={this.state.loggedInUser} />
-    //     <Switch>
-    //       <Route exact path='/' component={Home}/>
-    //       <Route exact path='/signup' component = {Signup}/>
-    //       <Route exact path="/trabajos" component={TrabajosList}/>
-    //       <Route exact path="/trabajos/:id" component={TrabajosDetails} />
-    //     </Switch>
-    //   </div>
-    // );
+  
   }
 }
 

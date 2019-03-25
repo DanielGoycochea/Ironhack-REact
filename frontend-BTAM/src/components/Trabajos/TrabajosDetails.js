@@ -10,9 +10,11 @@ class TrabajosDetails extends Component {
         super(props)
         this.state={}
     }
+   
     componentDidMount(){
         this.getSingleTrabajo()
     }
+    
     getSingleTrabajo= () =>{
         const {params} = this.props.match
         axios.get (`${process.env.REACT_APP_API_SERVER}${params.id}`, {withCredentials:true})
@@ -46,15 +48,14 @@ class TrabajosDetails extends Component {
 
     ownershipCheck = (trabajo) => {
         if(this.props.loggedInUser && trabajo.owner === this.props.loggedInUser._id){
-            console.log(trabajo)
-            return (
-                <div>
-                    <div>{this.renderEditForm()}</div>
-                    <button onClick={()=>this.deleteTrabajo(this.state._id)}>Borrar</button>
-                </div>
-            )
-        }
-    }
+          return (
+            <div>
+              <div>{this.renderEditForm()} </div>
+              <button onClick={() => this.deleteProject(this.state._id)}>Delete project</button>
+            </div>
+          )
+        } 
+      }
 
 
     render(){
@@ -70,8 +71,8 @@ class TrabajosDetails extends Component {
               <p>{this.state.nomEmpresa}</p>
               <p>{this.state.detallesEmpresa}</p>
               <p>{this.state.sitio}</p>
-              <div >{this.ownershipCheck(this.state)}aqui
-                </div>
+              <div >{this.ownershipCheck(this.state)}</div>
+               
 
               {/* <div>{this.renderEditForm()}</div>
               <button onClick={() => this.deleteTrabajo(this.state._id)}>Delete TRabajo</button> */}
