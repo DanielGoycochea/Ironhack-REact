@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom"
-import {Nav,Navbar, Form, Button} from 'react-bootstrap'
+import {Nav,Navbar, Form} from 'react-bootstrap'
 import AuthService from '../components/auth/auth-service'
 
 
@@ -27,19 +27,27 @@ class NavBar extends Component {
           if(this.state.loggedInUser){
             return(
               <div className= "">
-              <Navbar className="Navbar" expand="lg">
-                <Navbar.Brand ><Link to = '/'>BTAM</Link></Navbar.Brand>
+              <Navbar className="Navbar" expand="lg" bg="dark" variant="dark">
+                <Link to = '/'><Navbar.Brand >BTAM</Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                   
                      </Nav>
                      <Form inline>
-                       <Button variant="outline-danger">{this.state.loggedInUser.username}</Button>
+                   
+                       <Navbar.Brand>{this.state.loggedInUser.username}</Navbar.Brand >
                      </Form>
-                     <Link to='/'>
-                       <button onClick={() => this.logoutUser()}>Logout</button>
+                     <Form inline>
+                     <Link to='/perfil'>
+                       <Navbar.Brand>Perfil</Navbar.Brand >
                       </Link>
+                      </Form>
+                     <Form inline>
+                     <Link to='/'>
+                       <Navbar.Brand onClick={() => this.logoutUser()}>Salir</Navbar.Brand >
+                      </Link>
+                      </Form>
 
 
                </Navbar.Collapse>
@@ -50,18 +58,20 @@ class NavBar extends Component {
           } else {
             return(
               <div className= "">
-              <Navbar className="Navbar" expand="lg">
-                <Navbar.Brand ><Link to = '/'>BTAM</Link></Navbar.Brand>
+              <Navbar className="Navbar" expand="lg" >
+                <Link to = '/'><Navbar.Brand >BTAM</Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                   
                     </Nav>
                     <Form inline>
-                     <Button variant="outline-danger"><Link to='/signup'>Signup</Link> </Button>
+                    <Link to='/login'><Navbar.Brand >Inicia Sesión</Navbar.Brand ></Link>
+                    <Link to='/signup'><Navbar.Brand >Registrate</Navbar.Brand ></Link> 
+                     
                     </Form>
                     <Form inline>
-                    <Button variant="outline-danger"><Link to='/login'>Login</Link> </Button>
+
                     </Form>
               </Navbar.Collapse>
             </Navbar>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AuthService from './auth-service'
 import {Link} from 'react-router-dom'
 import {Button, Form} from 'react-bootstrap';
+import swal from 'sweetalert';
 
 class Login extends Component {
     constructor(props) {
@@ -25,8 +26,10 @@ class Login extends Component {
                 password: ''
             })
             this.props.getUser(response)
+            swal("Inicio de Sesión", "Correctamente", "success");
         })
         .catch( error => console.log(error))
+            swal("Error", "verifique sus datos", "error");
     }
 
     handleChange = (event) =>{
@@ -54,7 +57,7 @@ class Login extends Component {
                             Submit
                         </Button>
                         <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.<Link to={"/"}> Signuo</Link>
+                        We'll never share your email with anyone else.<Link to={"/"}> REgistrate</Link>
                         </Form.Text>
                         
                     
@@ -64,7 +67,7 @@ class Login extends Component {
                 
                 
             </div>
-        );
+        )
     }
 }
 
