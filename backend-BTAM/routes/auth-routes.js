@@ -9,6 +9,17 @@ const User          = require ('../models/User')
 authRoutes.post ('/signup', (req, res, next)=>{
   const username = req.body.username
   const password = req.body.password
+  const nombre = req.body.nombre
+  const apellido = req.body.apellido
+  const categoria = req.body.categoria
+  const descripcion = req.body.descripcion
+  const fechaNacimiento = req.body.fechaNacimiento
+  const escolaridad = req.body.escolaridad
+  const profesion = req.body.profesion
+  const ultimoTrabajo = req.body.ultimoTrabajo
+  const edad= req.body.edad
+
+
 
   if(!username||!password){
     res.status(400).json({message:'proporciona username y password'})
@@ -35,8 +46,19 @@ authRoutes.post ('/signup', (req, res, next)=>{
     const hashPass  = bcrypt.hashSync(password, salt);
 
     const aNewUser  = new User ({
+      nombre:nombre,
+      apellido:apellido,
       username:username,
-      password: hashPass
+      password:hashPass,
+      edad:edad,
+      fechaNacimiento:fechaNacimiento,
+      cv:{
+        categoria: categoria,
+        descripcion: descripcion,
+        escolaridad: escolaridad,
+        profesion: profesion,
+        ultimoTrabajo: ultimoTrabajo
+      }
     });
 
     aNewUser.save(err=>{
@@ -64,8 +86,6 @@ authRoutes.post('/login', (req,res, next)=>{
       return
     }
     if(!theUser){
-       // "failureDetails" contains the error messages
-      // from our logic in "LocalStrategy" { message: '...' }.
       res.status(401).json(failureDetails)
       return;
     }

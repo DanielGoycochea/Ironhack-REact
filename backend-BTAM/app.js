@@ -52,7 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 app.use(session({
-  secret:"elgatoviudo",
+  secret:process.env.SESSION,
   resave:true,
   saveUninitialized:true 
 }));
@@ -72,7 +72,12 @@ app.use('/', index);
 const trabajosRoutes = require ('./routes/trabajo-routes')
 app.use('/api', trabajosRoutes)
 
+const perfilRoutes = require ('./routes/profile-route')
+app.use('/api', perfilRoutes)
+
 const authRoutes =require ('./routes/auth-routes');
 app.use ('/api',authRoutes)
+
+
 
 module.exports = app;
