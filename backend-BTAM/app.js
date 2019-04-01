@@ -78,6 +78,7 @@ app.use('/api', perfilRoutes)
 const authRoutes =require ('./routes/auth-routes');
 app.use ('/api',authRoutes)
 
-
+const emailRoute = require ('./routes/email-route')
+app.use('/api', emailRoute)
 
 module.exports = app;

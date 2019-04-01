@@ -1,28 +1,51 @@
 const express = require ('express');
 const mongoose = require('mongoose');
-const User = require ('../models/User')
-const nodemailer = require('nodemailer');
+const Profile = require ('../models/Profile')
+
+
 
 const router = express.Router()
 
-router.get('/perfil',(req, res, next)=>{
-    User.find()
-    .then(allTheperfil=>{
-        res.json(allTheperfil)
-    })
-    .catch(err=>{
-        res.json (err)
-    })
+
+router.get('/perfil', (req, res, next)=>{
+  Profile.find()
+  .then (alltheprofile=>{
+    res.json(alltheprofile)
+  })
+  .catch(err=>{
+    res.json(err)
+  })
 })
+
+router.post('/perfil', (req, res, next)=>{
+  Profile.create({
+  categoria : req.body.categoria,
+  descripcion : req.body.descripcion,
+  fechaNacimiento : req.body.fechaNacimiento,
+  escolaridad : req.body.escolaridad,
+  profesion : req.body.profesion,
+  ultimoTrabajo : req.body.ultimoTrabajo,
+  edad: req.body.edad,
+  owner: req.user._id,
+  perfilCreado: req.body.perfilCreado
+  })
+  .then(response=>{
+    res.json(response)
+  })
+  .catch(err=>{
+    res.json(err)
+  })
+})
+
 
 router.put('/perfil/:id', (req,res,next)=>{
   if (!mongoose.Types.ObjectId.isValid(req.params.id)){
     res.status(400).json({menssage:'id no es valido'})
     return
 }
-User.findByIdAndUpdate(req.params.id, req.body)
+Profile.findByIdAndUpdate(req.params.id, req.body)
 .then(()=>{
-  res.json({menssage:`Se actualizo correctamente el usuario ${res.params.id}`})
+  res.json({menssage:`Se actualizo correctamente el usuario ${req.params.id}`})
 })
 .catch(err=>{
         res.json(err)
@@ -30,34 +53,7 @@ User.findByIdAndUpdate(req.params.id, req.body)
 
 })
 
-router.post('/email', (req, res, next )=>{
-  var data= req.body
 
-  var transporter = nodemailer.createTransport({
-    service:'gmail',
-    auth:{
-      user:'danielgoycocheardz@gmail.com',
-      pass: 'Tricuricus1982'
-    }
-  })
-
-  const mailOptions={
-    from: 'danielgoycocheardz@gmail.com',
-    to: 'rodago_x@hotmail.com',
-    subject: 'Subject of your email',
-    html:`<p>${data.name}</p>
-          <p>${data.email}</p>
-          <p>${data.message}</p>`
-  
-  }
-  transporter.sendMail(mailOptions)
-  .then(()=>{
-    res.json({menssage:`Se envio correo a ${data.name}`})
-  })
-  .catch(err=>{
-          res.json(err)
-      })
-})
 
 
 module.exports = router

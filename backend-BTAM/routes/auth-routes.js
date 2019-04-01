@@ -11,13 +11,7 @@ authRoutes.post ('/signup', (req, res, next)=>{
   const password = req.body.password
   const nombre = req.body.nombre
   const apellido = req.body.apellido
-  const categoria = req.body.categoria
-  const descripcion = req.body.descripcion
-  const fechaNacimiento = req.body.fechaNacimiento
-  const escolaridad = req.body.escolaridad
-  const profesion = req.body.profesion
-  const ultimoTrabajo = req.body.ultimoTrabajo
-  const edad= req.body.edad
+  
 
 
 
@@ -50,15 +44,7 @@ authRoutes.post ('/signup', (req, res, next)=>{
       apellido:apellido,
       username:username,
       password:hashPass,
-      edad:edad,
-      fechaNacimiento:fechaNacimiento,
-      cv:{
-        categoria: categoria,
-        descripcion: descripcion,
-        escolaridad: escolaridad,
-        profesion: profesion,
-        ultimoTrabajo: ultimoTrabajo
-      }
+           
     });
 
     aNewUser.save(err=>{
@@ -78,6 +64,7 @@ authRoutes.post ('/signup', (req, res, next)=>{
     })
   })
 })
+
 
 authRoutes.post('/login', (req,res, next)=>{
   passport.authenticate('local',(err, theUser,failureDetails)=>{
