@@ -7,8 +7,11 @@ class Signup extends Component {
     constructor(props){
         super(props)
             this.state = {
-                username:'',
-                password:''
+                username: "",
+                password: "",
+                nombre:"",
+                apellido:"",
+               
             }
             this.service = new AuthService()
         }
@@ -18,14 +21,21 @@ class Signup extends Component {
 
         const username = this.state.username
         const password = this.state.password
+        const nombre = this.state.nombre
+        const apellido = this.state.apellido
+        
 
-        this.service.signup(username, password)
+        this.service.signup(username, password, nombre, apellido)
         .then( response =>{
             this.setState({
                 username: "",
-                password: ""
+                password: "",
+                nombre:"",
+                apellido:"",
+               
             })
             this.props.getUser(response)
+            
         })
         .catch(error => console.log(error))
     }
@@ -39,8 +49,18 @@ class Signup extends Component {
     
         render(){
             return(
-                <div>
+                <div className=" container">
                     <Form onSubmit={this.handleFormSubmit}>
+                        <Form.Group controlId="nombre">
+                            <Form.Label>Nombre</Form.Label>
+                            <Form.Control name='nombre' value={this.state.nombre}type="text" placeholder="Ingresa Correo electronico" onChange={e=> this.handleChange(e)}/>
+                        </Form.Group>
+                        <Form.Group controlId="apellido">
+                            <Form.Label>Apellido</Form.Label>
+                            <Form.Control name='apellido' value={this.state.apellido}type="text" placeholder="Ingresa Correo electronico" onChange={e=> this.handleChange(e)}/>
+                        </Form.Group>
+
+
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Correo electronico</Form.Label>
                             <Form.Control name='username' value={this.state.username}type="text" placeholder="Ingresa Correo electronico" onChange={e=> this.handleChange(e)}/>
@@ -50,6 +70,7 @@ class Signup extends Component {
                             <Form.Label>Contraseña</Form.Label>
                             <Form.Control name='password' value={this.state.password}type="password" placeholder="Ingresa Contraseña" onChange={e=>this.handleChange(e)}/>
                         </Form.Group>
+                      
                       
                         <Button variant="primary" type="submit" value="Signup">
                             Submit

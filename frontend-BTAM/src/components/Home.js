@@ -15,7 +15,7 @@ const Home=() =>{
                 <Row className="Navbar home-login">
                     <Col xs={12} md={6} >
                     <div>
-                    <h1>BOLSA DE TRABAJO PARA EL ADULTO MAYOR</h1>
+                    <div>BOLSA DE TRABAJO PARA EL ADULTO MAYOR</div>
                     <Link to = '/trabajos'><Button variant="info" size="lg">Encuentra Empleo</Button></Link>
                     </div>
                     </Col>

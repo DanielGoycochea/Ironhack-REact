@@ -10,6 +10,9 @@ import Signup from './components/auth/Signup';
 import AuthService from './components/auth/auth-service'
 import Login from './components/auth/Login';
 import ProtectedRoute from './components/auth/protected-route'
+import Dashbord from './components/auth/Dashbord'
+import AddTrabajos from './components/Trabajos/AddTrabajos'
+import AddResume from './components/Resume/AddResume'
 
 
 
@@ -57,8 +60,11 @@ class App extends Component {
          <NavBar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
          <Switch>
            <Route user={this.state.loggedInUser} exact path='/' component={Home}/>
+           <ProtectedRoute user={this.state.loggedInUser}  exact path="/perfil" component={Dashbord}/>
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/trabajos" component={TrabajosList}/>
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/trabajos/:id" component={TrabajosDetails} />
+           <ProtectedRoute user={this.state.loggedInUser}  exact path="/addtrabajo" component={AddTrabajos} />
+           <ProtectedRoute user={this.state.loggedInUser}  exact path="/addperfil" component={AddResume}/>
          </Switch>
        </div>
       )
@@ -72,6 +78,8 @@ class App extends Component {
            <Route exact path='/login'   render={() => <Login getUser={this.getTheUser}/>}/>
            <Route   exact path="/trabajos" component={TrabajosList}/>
            <Route   exact path="/trabajos/:id" component={TrabajosDetails} />
+           <ProtectedRoute user={this.state.loggedInUser}  exact path="/addtrabajo" component={AddTrabajos} />
+           <ProtectedRoute user={this.state.loggedInUser}  exact path="/perfil" component={Dashbord}/>
          </Switch>
        </div>
       )

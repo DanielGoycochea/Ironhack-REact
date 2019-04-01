@@ -3,6 +3,12 @@ body{
   padding: 0;
   
 }
+.image-perfil{
+  width: auto;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 10px
+}
 
 
 .image-carusel{
@@ -18,7 +24,20 @@ body{
   position: absolute;
   font-size: 4.5em;
   margin-left: 20%;
-  margin-top: 15%;
-  color: #ffffff
+  margin-top: 12%;
+  color: #ffffff;
   /* margin-left: 40px; */
+}
+section{
+  border: 0px solid red;
+  padding: 30px;
+  margin-top: 50px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
+}
+.button-perfil{
+  margin-top: 60px;
+}
+.centrar{
+  text-align: center; 
+  align-items: center
 }

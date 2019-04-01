@@ -9,7 +9,7 @@ class Login extends Component {
         super(props);
         this.state = {
             username : '',
-            password : ''
+            password : '',
         }
         this.service = new AuthService()
         
@@ -47,6 +47,7 @@ class Login extends Component {
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Correo electronico</Form.Label>
                             <Form.Control name='username' value={this.state.username}type="text" placeholder="Ingresa Correo electronico" onChange={e=> this.handleChange(e)}/>
+                         
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
@@ -57,7 +58,7 @@ class Login extends Component {
                             Submit
                         </Button>
                         <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.<Link to={"/"}> REgistrate</Link>
+                        We'll never share your email with anyone else.<Link to={"/"}> Registrate</Link>
                         </Form.Text>
                         
                     

@@ -59,8 +59,9 @@ class TrabajosDetails extends Component {
 
 
     render(){
-        return(
-            <div className="container">
+        if(this.props.loggedInUser){
+            return(
+             <div className="container">
               <img src={this.state.image} alt="logo"/>
               <h1>{this.state.puesto}</h1>
               <p>{this.state.ubicacion }</p>
@@ -71,14 +72,32 @@ class TrabajosDetails extends Component {
               <p>{this.state.nomEmpresa}</p>
               <p>{this.state.detallesEmpresa}</p>
               <p>{this.state.sitio}</p>
-              <div >{this.ownershipCheck(this.state)}</div>
-               
+            <div >{this.ownershipCheck(this.state)}</div>
+               <button>postulate</button>
+                
+               <Link to={'/trabajos'}>REgresar</Link>
 
-              {/* <div>{this.renderEditForm()}</div>
-              <button onClick={() => this.deleteTrabajo(this.state._id)}>Delete TRabajo</button> */}
+              </div>
+            )
+        }else{
+            return(
+                <div className="container">
+              <img src={this.state.image} alt="logo"/>
+              <h1>{this.state.puesto}</h1>
+              <p>{this.state.ubicacion }</p>
+              <p>{this.state.horario}</p>              
+              <p>{this.state.categoria}</p>
+              <p>{this.state.descripcion}</p>
+              <p>{this.state.sueldo}</p>
+              <p>{this.state.nomEmpresa}</p>
+              <p>{this.state.detallesEmpresa}</p>
+              <p>{this.state.sitio}</p>
               <Link to={'/trabajos'}>REgresar</Link>
+         
            </div>
-        )
+            )
+        }
+        
     }
 }
 

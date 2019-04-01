@@ -50,21 +50,9 @@ class TrabajosList extends Component{
                 </Table>
                
                
-                {/* <div className="container">
-                    {this.state.listOfTrabajos.map((trabajo, index)=>{
-                        return(
-                            <div key= {trabajo._id}>
-                            <Link to ={`/trabajos/${trabajo._id}`}>
-                                {trabajo.puesto}
-                            </Link>
-                            <p>{trabajo.descripcion}</p>
-                            </div>
-                        )
-                    })
-                        }
-                </div> */}
+               
                 <div>
-                    {/* <AddTrabajos getData={()=> this.getAllTrabajos ()}/> */}
+             
                 </div>
 
             </div>

@@ -36,7 +36,7 @@ class NavBar extends Component {
                      </Nav>
                      <Form inline>
                    
-                       <Navbar.Brand>{this.state.loggedInUser.username}</Navbar.Brand >
+                       <Navbar.Brand>{this.state.loggedInUser.nombre}</Navbar.Brand >
                      </Form>
                      <Form inline>
                      <Link to='/perfil'>
