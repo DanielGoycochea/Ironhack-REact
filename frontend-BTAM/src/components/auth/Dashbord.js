@@ -17,7 +17,9 @@ class Dashbord extends Component {
                     <Col className="centrar">
                     <h1>Bienvenido {this.props.loggedInUser.nombre}</h1>
                     <Row ><img className="image-perfil"src={this.props.loggedInUser.imagen} alt="perfil"/></Row>
-                    <Row className="button-perfil"><Button >Editar Peril</Button></Row>
+                    <Row className="button-perfil">
+                        <Link to='/addperfil'><Button >Editar Peril</Button></Link>
+                    </Row>
                     
                     </Col>
                     <Col className="">
@@ -25,7 +27,7 @@ class Dashbord extends Component {
                         <section>
                             <h1>Encuentre Empleo </h1>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis praesentium aperiam maiores culpa nulla earum totam, consequuntur dolores voluptas nostrum voluptate ex labore unde a, doloribus quisquam dolore. Nulla, aut.</p>
-                            <button>Encuentre un empleo</button>
+                            <Link to="/trabajos"><button>Encuentre un empleo</button></Link>
                         
                         </section>
                     </Row>

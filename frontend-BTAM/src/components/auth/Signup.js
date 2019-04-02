@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import AuthService from './auth-service'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import {Form, Button} from 'react-bootstrap';
+import swal from 'sweetalert';
 
 class Signup extends Component {
     constructor(props){
@@ -11,6 +12,7 @@ class Signup extends Component {
                 password: "",
                 nombre:"",
                 apellido:"",
+                isLoggedin: false
                
             }
             this.service = new AuthService()
@@ -32,12 +34,15 @@ class Signup extends Component {
                 password: "",
                 nombre:"",
                 apellido:"",
+                isLoggedin: true
                
             })
             this.props.getUser(response)
+            swal("registro", "Correctamente", "success");
             
         })
         .catch(error => console.log(error))
+        swal("Error", "verifique sus datos", "error");
     }
 
     handleChange = (event) =>{
@@ -48,8 +53,14 @@ class Signup extends Component {
 
     
         render(){
+            let componente;
+            if(this.state.isLoggedin)
+                componente=<Redirect to="/perfil"/>
+                else
+                componente = ""
             return(
                 <div className=" container">
+                {componente} 
                     <Form onSubmit={this.handleFormSubmit}>
                         <Form.Group controlId="nombre">
                             <Form.Label>Nombre</Form.Label>

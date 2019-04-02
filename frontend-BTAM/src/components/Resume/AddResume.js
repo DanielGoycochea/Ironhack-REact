@@ -33,7 +33,8 @@ class AddResume extends Component {
             descripcion,
             escolaridad,
             profesion,
-            ultimoTrabajo
+            ultimoTrabajo,
+            perfilCreado:true
         },{withCredentials:true})
         .then(()=>{
             this.setState({
@@ -41,7 +42,7 @@ class AddResume extends Component {
             fechaNacimiento:'',
             categoria: '',
             descripcion:'',
-            escolarida:'',
+            escolaridad:'',
             profesion:'',
             ultimoTrabajo:''
             })
@@ -57,7 +58,7 @@ class AddResume extends Component {
 
     render() {
         return (
-            <div>
+            <div className='container'>
                 <Form onSubmit = {this.handleFormSumit}>
                     <Form.Group controlId="edad">
                         <Form.Label>edad</Form.Label>

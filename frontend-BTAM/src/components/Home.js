@@ -19,9 +19,6 @@ const Home=() =>{
                     <Link to = '/trabajos'><Button variant="info" size="lg">Encuentra Empleo</Button></Link>
                     </div>
                     </Col>
-                    
-
-                    
                     <Col xs={12} md={6}>
                         
                 </Col>

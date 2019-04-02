@@ -47,6 +47,7 @@ class TrabajosDetails extends Component {
     }
 
     ownershipCheck = (trabajo) => {
+        
         if(this.props.loggedInUser && trabajo.owner === this.props.loggedInUser._id){
           return (
             <div>
@@ -73,9 +74,8 @@ class TrabajosDetails extends Component {
               <p>{this.state.detallesEmpresa}</p>
               <p>{this.state.sitio}</p>
             <div >{this.ownershipCheck(this.state)}</div>
-               <button>postulate</button>
-                
-               <Link to={'/trabajos'}>REgresar</Link>
+               <Link to={'/email'}><button>postulate</button></Link>
+                <Link to={'/trabajos'}>REgresar</Link>
 
               </div>
             )
@@ -92,7 +92,7 @@ class TrabajosDetails extends Component {
               <p>{this.state.nomEmpresa}</p>
               <p>{this.state.detallesEmpresa}</p>
               <p>{this.state.sitio}</p>
-              <Link to={'/trabajos'}>REgresar</Link>
+              <Link to={'/trabajos'}>Regresar</Link>
          
            </div>
             )

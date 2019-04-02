@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import {Button, Form} from 'react-bootstrap';
 import swal from 'sweetalert';
 
@@ -10,6 +10,7 @@ class Login extends Component {
         this.state = {
             username : '',
             password : '',
+            isLoggedin: false
         }
         this.service = new AuthService()
         
@@ -19,14 +20,19 @@ class Login extends Component {
         event.preventDefault()
         const username = this.state.username
         const password =  this.state.password
+        
+
         this.service.login(username, password)
         .then(response=>{
             this.setState({
                 username: '',
-                password: ''
+                password: '',
+                isLoggedin: true
+                
             })
             this.props.getUser(response)
             swal("Inicio de Sesión", "Correctamente", "success");
+            
         })
         .catch( error => console.log(error))
             swal("Error", "verifique sus datos", "error");
@@ -40,8 +46,15 @@ class Login extends Component {
 
 
     render() {
+        let componente;
+        if(this.state.isLoggedin)
+            componente=<Redirect to="/perfil"/>
+            else
+            componente = ""
+       
         return (
             <div>
+            {componente} 
                 
                 <Form onSubmit={this.handleFormSubmit}>
                         <Form.Group controlId="formBasicEmail">
@@ -61,12 +74,9 @@ class Login extends Component {
                         We'll never share your email with anyone else.<Link to={"/"}> Registrate</Link>
                         </Form.Text>
                         
-                    
-                </Form>
-                   
 
-                
-                
+                </Form>
+             
             </div>
         )
     }
