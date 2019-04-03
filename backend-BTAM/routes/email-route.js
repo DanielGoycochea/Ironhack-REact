@@ -7,10 +7,13 @@ router.post('/email', (req, res, next )=>{
   var data= req.body
 
   var transporter = nodemailer.createTransport({
-    service:'gmail',
+    service:'Gmail',
     auth:{
-      user:'danielgoycocheardz@gmail.com',
-      pass: 'Tricuricus1982'
+      type: 'OAuth2',
+      user: process.env.NODEMAILER_EMAIL,
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      refreshToken: process.env.REFRESH_TOKEN
     }
   })
 

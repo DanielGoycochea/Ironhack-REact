@@ -22,7 +22,7 @@ class SendEmail extends Component {
         const subject = this.state.subject
         const message = this.state.message
         
-        axios.post('http://localhost:3005/api/email',
+        axios.post(process.env.REACT_APP_API_EMAIL,
         {name, 
         to, 
         subject, 

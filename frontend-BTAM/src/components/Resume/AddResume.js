@@ -26,7 +26,7 @@ class AddResume extends Component {
         const profesion = this.state.profesion
         const ultimoTrabajo = this.state.ultimoTrabajo
 
-        axios.post ('http://localhost:3005/api/perfil', {
+        axios.post ('https://back-btam.herokuapp.com/api/perfil/', {
             edad,
             fechaNacimiento,
             categoria,
@@ -46,6 +46,7 @@ class AddResume extends Component {
             profesion:'',
             ultimoTrabajo:''
             })
+            alert("RE REALIZO")
         })
         .catch(error=> console.log(error))
     }

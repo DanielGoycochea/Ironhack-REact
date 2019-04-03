@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar';
 import Home from './components/Home'
@@ -48,11 +47,6 @@ class App extends Component {
           })
         }
 
-
-
-
-
-
   render() {
     this.fetchUser()
     if(this.state.loggedInUser){
@@ -82,7 +76,6 @@ class App extends Component {
            <Route   exact path="/trabajos" component={TrabajosList}/>
            <Route   exact path="/trabajos/:id" component={TrabajosDetails} />
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addtrabajo" component={AddTrabajos} />
-           {/* <ProtectedRoute user={this.state.loggedInUser}  exact path="/perfil" component={Dashbord}/> */}
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addperfil" component={AddResume}/>
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/email" component={SendEmail}/>
          </Switch>
