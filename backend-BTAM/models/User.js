@@ -14,7 +14,8 @@ const userSchema = new Schema ({
   descripcion: String, 
   escolaridad:String,
   profesion:String,
-  ultimoTrabajo:String,  
+  ultimoTrabajo:String,
+  telefono:String  
 },{
     timestamps:{
       createdAt:"created_at",
