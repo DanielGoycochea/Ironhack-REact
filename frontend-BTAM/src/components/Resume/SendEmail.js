@@ -4,35 +4,64 @@ import {Form} from 'react-bootstrap'
 
 
 class SendEmail extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
-            name:'',
+            nombre: this.props.loggedInUser.nombre,
             to:'',
             subject:'',
-            message:''
-            
+            message:'',
+            apellido:this.props.loggedInUser.apellido,
+            edad: this.props.loggedInUser.edad,
+            descripcion: this.props.loggedInUser.descripcion,
+            escolaridad:this.props.loggedInUser.escolaridad,
+            profesion: this.props.loggedInUser.profesion,
+            ultimoTrabajo: this.props.loggedInUser.ultimoTrabajo,
+            telefono:this.props.loggedInUser.telefono,
+            username:this.props.loggedInUser.username,
+                          
         }
     }
 
     handleFormSubmit=(event)=>{
         event.preventDefault()
-        const name = this.state.name
+        
         const to = this.state.to
         const subject = this.state.subject
         const message = this.state.message
+        const nombre= this.props.loggedInUser.nombre
+        const apellido=this.props.loggedInUser.apellido
+        const edad= this.props.loggedInUser.edad
+        const descripcion = this.props.loggedInUser.descripcion
+        const escolaridad = this.props.loggedInUser.escolaridad
+        const profesion = this.props.loggedInUser.profesion
+        const telefono = this.props.loggedInUser.telefono
+        const ultimoTrabajo = this.props.loggedInUser.ultimoTrabajo
+        const username = this.props.loggedInUser.username
         
         axios.post(process.env.REACT_APP_API_EMAIL,
-        {name, 
+        { 
         to, 
-        subject, 
-        message},{withCredentials:true})
+        subject,
+        message,
+         nombre, 
+         apellido, 
+         edad, 
+         descripcion,
+         escolaridad, 
+         profesion,
+         telefono,
+         ultimoTrabajo, 
+         username
+        },{
+            withCredentials:true
+        })
         .then(()=>{
             this.setState({
             name:'',
             to:'',
             subject:'',
-            message:''
+            message:'',
             
             })
             
@@ -52,7 +81,7 @@ class SendEmail extends Component {
                 <Form onSubmit = {this.handleFormSubmit}>
                 <Form.Group controlId="name">
                     <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}placeholder="Indique el nombre del puesto" />
+                    <Form.Control disabled type="text" name="nombre" value={this.state.nombre} onChange={e => this.handleChange(e)} placeholder="Indique el nombre del puesto" />
                 </Form.Group>
                 <Form.Group controlId="to">
                     <Form.Label>Para</Form.Label>
@@ -64,7 +93,7 @@ class SendEmail extends Component {
                 </Form.Group>
                 <Form.Group controlId="message">
                     <Form.Label>Mensaje</Form.Label>
-                    <Form.Control type="text" name="message" value={this.state.message} onChange={e => this.handleChange(e)}placeholder="Indique el nombre del puesto" />
+                    <Form.Control as="textarea" rows="3" name="message" value={this.state.message} onChange={e => this.handleChange(e)}placeholder="ingresa tus dtaos"/>
                 </Form.Group>
 
                 <input type="submit" value ="Submit"/>

@@ -77,7 +77,7 @@ class App extends Component {
            <Route   exact path="/trabajos/:id" component={TrabajosDetails} />
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addtrabajo" component={AddTrabajos} />
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addperfil" component={AddResume}/>
-           <ProtectedRoute user={this.state.loggedInUser}  exact path="/email" component={SendEmail}/>
+           {/* <ProtectedRoute user={this.state.loggedInUser}  exact path="/email" component={SendEmail}/> */}
          </Switch>
        </div>
       )
