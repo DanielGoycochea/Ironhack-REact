@@ -7,9 +7,15 @@ const userSchema = new Schema ({
   username:String,
   password: String,
   imagen: {type:String, default: 'https://www.r-users.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png'},
- 
- 
-  },{
+  edad:Number,
+  fechaNacimiento: {type: Date},
+  trabajosPublicados:[{type: Schema.Types.ObjectId, ref:'Trabajos'}],
+  categoria: String,
+  descripcion: String, 
+  escolaridad:String,
+  profesion:String,
+  ultimoTrabajo:String,  
+},{
     timestamps:{
       createdAt:"created_at",
       updatedAt:"updated_at"
