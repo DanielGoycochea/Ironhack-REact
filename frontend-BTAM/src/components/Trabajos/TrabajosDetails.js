@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import EditTrabajos from './EditTrabajos'
+import SendEmail from '../Resume/SendEmail'
 
  import { Link } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ class TrabajosDetails extends Component {
     }
    
     componentDidMount(){
+        console.log('hola')
         this.getSingleTrabajo()
     }
     
@@ -60,6 +62,7 @@ class TrabajosDetails extends Component {
 
 
     render(){
+        console.log(this.statel)
         if(this.props.loggedInUser){
             return(
              <div className="container">
@@ -73,7 +76,10 @@ class TrabajosDetails extends Component {
               <p>{this.state.nomEmpresa}</p>
               <p>{this.state.detallesEmpresa}</p>
               <p>{this.state.sitio}</p>
-            <div >{this.ownershipCheck(this.state)}</div>
+              <p>{this.state.to}</p>
+              {/* <div >{this.ownershipCheck(this.state)}</div> */}
+           
+            <SendEmail {...this.props} correo={this.state.correo} puesto={this.state.puesto}  />
                <Link to={'/email'}><button>postulate</button></Link>
                 <Link to={'/trabajos'}>REgresar</Link>
 

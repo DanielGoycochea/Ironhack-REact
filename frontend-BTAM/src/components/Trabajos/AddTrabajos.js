@@ -18,6 +18,7 @@ class AddTrabajos extends Component{
         detallesEmpresa: '',
         nomEmpresa: '',
         sitio: '',
+        correo:""
         }
     }
         handleFormSubmit = (event)=>{
@@ -31,6 +32,7 @@ class AddTrabajos extends Component{
             const detallesEmpresa =this.state.detallesEmpresa
             const nomEmpresa =this.state.nomEmpresa
             const sitio =this.state.sitio
+            const correo =this.state.correo
 
             axios.post(process.env.REACT_APP_API_SERVER,
             {puesto,
@@ -41,6 +43,7 @@ class AddTrabajos extends Component{
             sueldo,
             detallesEmpresa,
             nomEmpresa,
+            correo,
             sitio}, {withCredentials:true})
             .then(()=>{
                 this.setState({
@@ -53,6 +56,7 @@ class AddTrabajos extends Component{
                     detallesEmpresa: '',
                     nomEmpresa: '',
                     sitio: '',
+                    correo:''
                 })
                 swal("Guardado", "Correctamente", "success");
             })
@@ -129,6 +133,10 @@ class AddTrabajos extends Component{
                                 <Form.Group controlId="sitio">
                                     <Form.Label>Sitio</Form.Label>
                                     <Form.Control type="text" name="sitio" value={this.state.sitio} onChange={e => this.handleChange(e)}placeholder="lIndique el Link del Sitio Web de la empresa" />
+                                </Form.Group>
+                                <Form.Group controlId="correo">
+                                    <Form.Label>Correo</Form.Label>
+                                    <Form.Control type="text" name="correo" value={this.state.correo} onChange={e => this.handleChange(e)}placeholder="lIndique el Link del Sitio Web de la empresa" />
                                 </Form.Group>
                                 
                                     <input type="submit" value ="Submit"/>
