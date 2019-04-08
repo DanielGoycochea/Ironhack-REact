@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Form} from 'react-bootstrap'
+import {Form, Button, Modal} from 'react-bootstrap'
 
 
 class SendEmail extends Component {
@@ -53,24 +53,12 @@ class SendEmail extends Component {
     render() {
         return (
             <div>
-                <Form onSubmit = {this.handleFormSubmit}>
-                <Form.Group controlId="name">
-                    <Form.Label>Nombre</Form.Label>
-                    <Form.Control disabled type="text" name="nombre" value={this.props.loggedInUser.nombre} onChange={e => this.handleChange(e)} placeholder="Indique el nombre del puesto" />
-                </Form.Group>
-                <Form.Group controlId="to">
-                    <Form.Label>Para</Form.Label>
-                    <Form.Control disabled type="text" name="to" value={this.props.correo} onChange={e => this.handleChange(e)}placeholder="Indique el nombre del puesto" />
-                   
-                </Form.Group>
-                <Form.Group controlId="subject">
-                    <Form.Label>Asunto</Form.Label>
-                    <Form.Control type="text" name="subject" value={this.props.puesto} onChange={e => this.handleChange(e)}placeholder="Indique el nombre del puesto" />
-                </Form.Group>
-                
-                <input type="submit" value ="Submit"/>
-                
-                </Form>
+            <Form onSubmit = {this.handleFormSubmit}>
+               <p> Se enviaran tus datos a la empresa {this.props.nomEmpresa}, para el puesto {this.props.puesto} ,  pulsa enviar si esta de acuerdo.</p>
+               <Modal.Footer>
+               <Button type="submit" value ="Submit">Enviar</Button>
+               </Modal.Footer>
+            </Form>
                 
             </div>
         );

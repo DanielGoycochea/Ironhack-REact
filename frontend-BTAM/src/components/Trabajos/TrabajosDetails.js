@@ -1,17 +1,29 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import EditTrabajos from './EditTrabajos'
-import SendEmail from '../Resume/SendEmail'
+import SendEmail from '../Resume/SendEmail';
+import {Button, Modal} from 'react-bootstrap'
 
  import { Link } from 'react-router-dom';
 
 
 class TrabajosDetails extends Component {
-    constructor(props){
-        super(props)
-        this.state={}
+    constructor(props, context){
+        super(props, context)
+        this.handleShow = this.handleShow.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+
+        this.state={
+            show: false,
+        }
     }
-   
+    handleClose() {
+        this.setState({ show: false });
+      }
+    
+      handleShow() {
+        this.setState({ show: true });
+      }
     componentDidMount(){
         console.log('hola')
         this.getSingleTrabajo()
@@ -53,8 +65,8 @@ class TrabajosDetails extends Component {
         if(this.props.loggedInUser && trabajo.owner === this.props.loggedInUser._id){
           return (
             <div>
-              <div>{this.renderEditForm()} </div>
-              <button onClick={() => this.deleteProject(this.state._id)}>Delete project</button>
+              {/* <div>{this.renderEditForm()} </div> */}
+              <Button onClick={() => this.deleteTrabajo (this.state._id)}>Delete project</Button>
             </div>
           )
         } 
@@ -62,7 +74,7 @@ class TrabajosDetails extends Component {
 
 
     render(){
-        console.log(this.statel)
+        
         if(this.props.loggedInUser){
             return(
              <div className="container">
@@ -77,10 +89,25 @@ class TrabajosDetails extends Component {
               <p>{this.state.detallesEmpresa}</p>
               <p>{this.state.sitio}</p>
               <p>{this.state.to}</p>
-              {/* <div >{this.ownershipCheck(this.state)}</div> */}
+              <div >{this.ownershipCheck(this.state)}</div><br/>
+                
+                
+              <Button variant="primary" onClick={this.handleShow}>
+                Postulate
+              </Button>
+
+                <Modal show={this.state.show} onHide={this.handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <SendEmail {...this.props} correo={this.state.correo} puesto={this.state.puesto}  nomEmpresa={this.state.nomEmpresa}/></Modal.Body>
+                    <Button variant="danger" onClick={this.handleClose}>
+                    Cerrar
+                    </Button>
+                </Modal>
            
-            <SendEmail {...this.props} correo={this.state.correo} puesto={this.state.puesto}  />
-               <Link to={'/email'}><button>postulate</button></Link>
+            
                 <Link to={'/trabajos'}>REgresar</Link>
 
               </div>
@@ -88,17 +115,17 @@ class TrabajosDetails extends Component {
         }else{
             return(
                 <div className="container">
-              <img src={this.state.image} alt="logo"/>
-              <h1>{this.state.puesto}</h1>
-              <p>{this.state.ubicacion }</p>
-              <p>{this.state.horario}</p>              
-              <p>{this.state.categoria}</p>
-              <p>{this.state.descripcion}</p>
-              <p>{this.state.sueldo}</p>
-              <p>{this.state.nomEmpresa}</p>
-              <p>{this.state.detallesEmpresa}</p>
-              <p>{this.state.sitio}</p>
-              <Link to={'/trabajos'}>Regresar</Link>
+                    <img src={this.state.image} alt="logo"/>
+                    <h1>{this.state.puesto}</h1>
+                    <p>{this.state.ubicacion }</p>
+                    <p>{this.state.horario}</p>              
+                    <p>{this.state.categoria}</p>
+                    <p>{this.state.descripcion}</p>
+                    <p>{this.state.sueldo}</p>
+                    <p>{this.state.nomEmpresa}</p>
+                    <p>{this.state.detallesEmpresa}</p>
+                    <p>{this.state.sitio}</p>
+                    <Link to={'/trabajos'}>Regresar</Link>
          
            </div>
             )

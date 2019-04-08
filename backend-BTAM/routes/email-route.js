@@ -20,7 +20,7 @@ router.post('/email', (req, res, next )=>{
   const mailOptions={
     
     to:      `${data.to}` ,
-    subject: `Postulante a la vacante ${data.subject}`,
+    subject: `Me interesa la vacante ${data.subject}`,
     html:    `<h1>Estoy interesado en la vacante ${data.puesto}</h1>
               <h4>Mis Datos son:</h4>
               <p>Nombre: ${data.nombre}</p>

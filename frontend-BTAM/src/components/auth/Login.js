@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service'
 import {Link, Redirect} from 'react-router-dom'
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, Row, Col, Container} from 'react-bootstrap';
 import swal from 'sweetalert';
 
 class Login extends Component {
@@ -35,7 +35,7 @@ class Login extends Component {
             
         })
         .catch( error => console.log(error))
-            swal("Error", "verifique sus datos", "error");
+            swal("Error", "verifique su correo y/o contraseña", "error");
     }
 
     handleChange = (event) =>{
@@ -55,28 +55,38 @@ class Login extends Component {
         return (
             <div>
             {componente} 
-                
-                <Form onSubmit={this.handleFormSubmit}>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Correo electronico</Form.Label>
-                            <Form.Control name='username' value={this.state.username}type="text" placeholder="Ingresa Correo electronico" onChange={e=> this.handleChange(e)}/>
-                         
-                        </Form.Group>
+            <Row>
+                <Col xs={12} md={6}>
+                    <img className="image-login" src="https://previews.123rf.com/images/djoronimo/djoronimo1509/djoronimo150900158/45393079-abuelo-y-nieto-observaci%C3%B3n-de-la-naturaleza-con-los-prism%C3%A1ticos-en-el-parque.jpg" alt="img"/>
+                </Col>
+                <Col xs={12} md={5} className="form-margin"> <h1>Inicia </h1><br/>
+                    <Container> 
+                       
+                    <Form onSubmit={this.handleFormSubmit} >
+                   
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label required className='label'>Correo Electrónico</Form.Label>
+                                <Form.Control size="lg" className="input" name='username' value={this.state.username}type="email" placeholder="Ingresa tu Correo Electrónico" onChange={e=> this.handleChange(e)}/>
+                            </Form.Group>
+                            <br/>
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Label  className='label'>Contraseña</Form.Label>
+                                <Form.Control required size="lg" className="input" name='password' value={this.state.password}type="password" placeholder="Ingresa tu Contraseña" onChange={e=>this.handleChange(e)}/>
+                            </Form.Group>
+                            <br/>
+                            <Button size="lg" className="input" variant="primary" type="submit" value="Login">
+                               Enviar
+                            </Button>
+                            
+                            <Form.Text className="text-muted "><br/>
+                            Aun no tines cuenta registarte  <Link to={"/signup"}> Aquí</Link>
+                            </Form.Text>
+                            
 
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Contraseña</Form.Label>
-                            <Form.Control name='password' value={this.state.password}type="password" placeholder="Ingresa Contraseña" onChange={e=>this.handleChange(e)}/>
-                        </Form.Group>
-                        <Button variant="primary" type="submit" value="Login">
-                            Submit
-                        </Button>
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.<Link to={"/"}> Registrate</Link>
-                        </Form.Text>
-                        
-
-                </Form>
-             
+                    </Form>
+                    </Container>
+                </Col>
+             </Row>
             </div>
         )
     }

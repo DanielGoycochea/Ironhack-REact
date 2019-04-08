@@ -12,7 +12,8 @@ import ProtectedRoute from './components/auth/protected-route'
 import Dashbord from './components/auth/Dashbord'
 import AddTrabajos from './components/Trabajos/AddTrabajos'
 import AddResume from './components/Resume/AddResume'
-import SendEmail from './components/Resume/SendEmail'
+
+
 
 
 
@@ -60,9 +61,7 @@ class App extends Component {
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/trabajos/:id" component={TrabajosDetails} />
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addtrabajo" component={AddTrabajos} />
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addperfil" component={AddResume}/>
-           <ProtectedRoute user={this.state.loggedInUser}  exact path="/email" component={SendEmail}/>
-
-         </Switch>
+        </Switch>
        </div>
       )
     } else {
@@ -77,7 +76,6 @@ class App extends Component {
            <Route   exact path="/trabajos/:id" component={TrabajosDetails} />
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addtrabajo" component={AddTrabajos} />
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addperfil" component={AddResume}/>
-           {/* <ProtectedRoute user={this.state.loggedInUser}  exact path="/email" component={SendEmail}/> */}
          </Switch>
        </div>
       )
