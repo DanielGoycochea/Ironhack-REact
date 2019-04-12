@@ -25,7 +25,7 @@ router.post('/trabajos', (req, res, next)=>{
         sueldo: req.body.sueldo,
         detallesEmpresa: req.body.detallesEmpresa,
         nomEmpresa: req.body.nomEmpresa,
-        sitio: req.body.sitio,
+        edad: req.body.edad,
         owner: req.user._id, 
         correo: req.body.correo
         })

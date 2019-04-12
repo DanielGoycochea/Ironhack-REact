@@ -11,7 +11,7 @@ const trabajosSchema = new Schema({
   sueldo: String,
   detallesEmpresa: String,
   nomEmpresa: String,
-  sitio: String,
+  edad: Number,
   image: {type:String, default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNOgd1j1aOvHf-wmpZjxei0YTNTXJZ0kuq9BX5QmEG3HYHLdwcng'},
   owner: {type: Schema.Types.ObjectId, ref:'User'},
   correo: String 

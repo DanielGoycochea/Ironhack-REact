@@ -41,8 +41,8 @@ class Signup extends Component {
             swal("registro", "Correctamente", "success");
             
         })
-        .catch(error => console.log(error))
-        swal("Error", "verifique sus datos", "error");
+        .catch(error => swal("Error", "verifique sus datos", "error"))
+        
     }
 
     handleChange = (event) =>{
@@ -63,9 +63,13 @@ class Signup extends Component {
                 {componente} 
                     <Row>
                         <Col xs={12} md={6}>
-                        <img className="image-login" src="https://previews.123rf.com/images/djoronimo/djoronimo1509/djoronimo150900158/45393079-abuelo-y-nieto-observaci%C3%B3n-de-la-naturaleza-con-los-prism%C3%A1ticos-en-el-parque.jpg" alt="img"/>
+                        <div>
+                        <img style={{height:'92vh', width:'100%', overflow:'hidden'}} src="https://res.cloudinary.com/dzxpqumj0/image/upload/v1554767907/iStock-627779744.jpg" alt="img"/>
+                        </div>
+
                         </Col>
                         <Col xs={12} md={5} className="form-margin">
+                        <h1>REGISTRATE</h1><br/>
                             <Form onSubmit={this.handleFormSubmit}>
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="nombre">
@@ -94,7 +98,7 @@ class Signup extends Component {
                                     Submit
                                 </Button>
                                 <Form.Text className="text-muted">
-                                <br/>We'll never share your email with anyone else.<Link to={"/"}> Login</Link>
+                                <br/>Ya tienes cuenta ingresa<Link to={"/login"}> aqui</Link>
                                 </Form.Text>
                             </Form>
                     </Col>

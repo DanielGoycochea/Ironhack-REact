@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Form} from 'react-bootstrap'
+import {Redirect} from 'react-router-dom'
 
 class AddResume extends Component {
     constructor(props){
         super(props)
         this.state={
-            edad:'',
-            fechaNacimiento:'',
-            categoria: '',
-            descripcion:'',
-            escolaridad: '',
-            profesion:'',
-            ultimoTrabajo:'',
-            telefono:'',
+            edad: this.props.loggedInUser.edad,
+            fechaNacimiento:this.props.loggedInUser.fechaNacimiento,
+            categoria: this.props.loggedInUser.categoria,
+            descripcion:this.props.loggedInUser.descripcion,
+            escolaridad: this.props.loggedInUser.escolaridad,
+            profesion:this.props.loggedInUser.profesion,
+            ultimoTrabajo: this.props.loggedInUser.ultimoTrabajo,
+            telefono:this.props.loggedInUser.telefono,
             perfilCreado: false
         }
     }
@@ -28,9 +29,9 @@ class AddResume extends Component {
         const profesion = this.state.profesion
         const ultimoTrabajo = this.state.ultimoTrabajo
         const telefono= this.state.telefono
-        // const mostrarFormulario = this.state.mostrarFormulario
+        
 
-        axios.put (`${process.env.REACT_APP_API_PROFILE}${this.props.loggedInUser._id}`, {
+        axios.put(`${process.env.REACT_APP_API_PROFILE}${this.props.loggedInUser._id}`, {
             edad,
             fechaNacimiento,
             categoria,
@@ -61,13 +62,16 @@ class AddResume extends Component {
         const {name, value} = event.target;
         this.setState({[name]:value})
     }
+
+    
    
 
 
     render() {
         if(this.state.perfilCreado){
             return(
-                <div>cambio  realizado</div>
+                <Redirect to="/perfil" Reload={e=>this.reload(e)}/>
+                // <button type="button" onClick={ this.reload }> <span>Reload</span> </button> 
             )
         }else{
             return (

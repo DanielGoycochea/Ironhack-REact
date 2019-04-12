@@ -99,4 +99,36 @@ authRoutes.get('/loggedin',(req,res,next)=>{
   res.status(403).json({message:'UnauthorizedN no esta logeado'})
 })
 
+authRoutes.put('/update/:id', (req,res,next)=>{
+  if (!req.isAuthenticated()){
+    res.status(400).json({menssage:'id no es valido'})
+    return
+}
+User.findByIdAndUpdate(req.params.id, req.body)
+.then(()=>{
+  res.json({message:`Se actualizo correctamente el usuario ${req.params.id}`})
+  return
+})
+.catch(err=>{
+        res.json(err)
+    })
+
+})
+
+
+authRoutes.get('/user/:id', (req,res, next)=>{
+  if (!req.isAuthenticated()){
+    res.status(400).json({menssage:'id no es valido'})
+    return
+  }
+  User.findById(req.params.id)
+  .then(response=>{
+      res.status(200).json (response);
+  })
+  .catch(err=>{
+      res.json(err);
+  })
+
+})
+
 module.exports = authRoutes;

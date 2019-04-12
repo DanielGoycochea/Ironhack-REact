@@ -14,9 +14,6 @@ import AddTrabajos from './components/Trabajos/AddTrabajos'
 import AddResume from './components/Resume/AddResume'
 
 
-
-
-
 class App extends Component {
         constructor(props){
           super(props)
@@ -61,7 +58,7 @@ class App extends Component {
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/trabajos/:id" component={TrabajosDetails} />
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addtrabajo" component={AddTrabajos} />
            <ProtectedRoute user={this.state.loggedInUser}  exact path="/addperfil" component={AddResume}/>
-        </Switch>
+          </Switch>
        </div>
       )
     } else {

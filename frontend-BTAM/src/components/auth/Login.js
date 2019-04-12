@@ -34,8 +34,8 @@ class Login extends Component {
             swal("Inicio de Sesión", "Correctamente", "success");
             
         })
-        .catch( error => console.log(error))
-            swal("Error", "verifique su correo y/o contraseña", "error");
+        .catch( error => swal("Error", "verifique su correo y/o contraseña", "error"))
+            ;
     }
 
     handleChange = (event) =>{
@@ -57,9 +57,11 @@ class Login extends Component {
             {componente} 
             <Row>
                 <Col xs={12} md={6}>
-                    <img className="image-login" src="https://previews.123rf.com/images/djoronimo/djoronimo1509/djoronimo150900158/45393079-abuelo-y-nieto-observaci%C3%B3n-de-la-naturaleza-con-los-prism%C3%A1ticos-en-el-parque.jpg" alt="img"/>
+                    <div >
+                        <img style={{height:'90vh', overflow:'hidden'}} className="image-login" src="https://res.cloudinary.com/dzxpqumj0/image/upload/v1554767848/iStock-522170875.jpg" alt="img"/>
+                    </div>
                 </Col>
-                <Col xs={12} md={5} className="form-margin"> <h1>Inicia </h1><br/>
+                <Col xs={12} md={5} className="form-margin"> <h1>INICIA SESIÓN</h1><br/>
                     <Container> 
                        
                     <Form onSubmit={this.handleFormSubmit} >
