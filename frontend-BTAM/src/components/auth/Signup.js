@@ -89,7 +89,7 @@ class Signup extends Component {
                                 <br/>
                                 <Form.Group controlId="formBasicPassword">
                                     <Form.Label className='label'>Contraseña</Form.Label>
-                                    <Form.Control  size="lg" className="input" required name='password' value={this.state.password}type="password" placeholder="Ingresa Contraseña" onChange={e=>this.handleChange(e)}/>
+                                    <Form.Control  size="lg" className="input" required name='password' value={this.state.password}type="password" placeholder="Ingresa Contraseña de mas de 8 caracteres" onChange={e=>this.handleChange(e)}/>
                                 </Form.Group>
                                 <br/>
                                 <ButtonToolbar >
