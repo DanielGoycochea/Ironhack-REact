@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import {Form, Alert, Button, ButtonToolbar} from 'react-bootstrap'
+import {Form,Button, ButtonToolbar} from 'react-bootstrap'
 import swal from 'sweetalert';
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 
 
@@ -18,9 +18,9 @@ class AddTrabajos extends Component{
         sueldo: '',
         detallesEmpresa: '',
         nomEmpresa: '',
-        sitio: '',
-        correo:"",
-        show: true
+        correo:'',
+        perfilActualizado: false
+        
         }
     }
         handleFormSubmit = (event)=>{
@@ -58,7 +58,8 @@ class AddTrabajos extends Component{
                     detallesEmpresa: '',
                     nomEmpresa: '',
                     edad: '',
-                    correo:''
+                    correo:'',
+                    perfilActualizado: true
                 })
                 swal("Guardado", "Correctamente", "success");
             })
@@ -71,22 +72,16 @@ class AddTrabajos extends Component{
         }
         
         render(){
-            const handleHide = () => this.setState({ show: false })
+            if(this.state.perfilActualizado){
+                return(
+                    <Redirect to="/perfil"/>
+                    
+                )
+            }else{
+          
             return(
                 <div className="container">
-                <Alert show={this.state.show} variant="info">
-                    <Alert.Heading>IMPORTANTE!!!</Alert.Heading>
-                    <p>
-                    Recuerda que los trabajos son exclusivamente para Adultos mayores por lo que la edad mínima para los empleos es de 55 años en adelante, esto con el fin de mantener el propósito de la página.    
-                    </p>
-                    <hr />
-                    <div className="d-flex justify-content-end">
-                        <Button onClick={handleHide} variant="outline-info">
-                        Cerrar
-                        </Button>
-                    </div>
-                </Alert>
-                    <h1><b>Agrega un empleo</b> </h1><br/>
+                    <h1 className="centrar" style={{marginTop:'50px'}}><b>Agrega un empleo</b> </h1><br/>
                        <Form onSubmit = {this.handleFormSubmit}>
                                 <Form.Group controlId="puesto">
                                     <Form.Label>Puesto</Form.Label>
@@ -105,7 +100,7 @@ class AddTrabajos extends Component{
                                     <Form.Control as="textarea" rows="3" name="detallesEmpresa" value ={this.state.detallesEmpresa} onChange={e=>this.handleChange(e)} placeholder="Describa los detalles de la empresa" />
                                 </Form.Group>
                                 <Form.Group controlId="ubicacion">
-                                    <Form.Label>Ubicacion del trabajo</Form.Label>
+                                    <Form.Label>Ubicación del trabajo</Form.Label>
                                     <Form.Control as="select" name="ubicacion" value={this.state.ubicacion} onChange={e => this.handleChange(e)}>
                                      <option>Seleccione una opción --</option>	
                                      <option>Coyoacán</option>	
@@ -148,7 +143,7 @@ class AddTrabajos extends Component{
                                      <option>Educación y Formación</option>
                                      <option>Hotelería / Restauración / Turismo</option>
                                      <option>Instalación / Mantenimiento / Reparación</option>
-                                     <option>Servicios de Seguridad></option>
+                                     <option>Servicios de Seguridad</option>
                                      <option>Otros</option>
                                     </Form.Control>
                                 </Form.Group>
@@ -159,10 +154,10 @@ class AddTrabajos extends Component{
                                         <span className="input-group-text">$</span>
                                     
                                     <Form.Control type="text" name="sueldo" value={this.state.sueldo} onChange={e => this.handleChange(e)}placeholder="Indique el sueldo (opcional)" />
-                                    <span class="input-group-text">.00</span>
+                                    <span className="input-group-text">.00</span>
                                 </div></Form.Group>
                                 
-                                <Form.Group controlId="sitio">
+                                <Form.Group controlId="edad">
                                     <Form.Label>Edad minima requerida</Form.Label>
                                     <Form.Control type="number" min="55"name="edad" value={this.state.edad} onChange={e => this.handleChange(e)}placeholder="55"/>
                                 </Form.Group>
@@ -175,14 +170,14 @@ class AddTrabajos extends Component{
                                         <Button type="submit" value ="Submit"  size="lg" variant="info">Enviar</Button>
                                     </div>
                                     <div className="button-det">
-                                        <Link to="/perfil"><Button type="submit" value ="Submit"  size="lg" variant="primary">Regresar</Button></Link>
+                                        <Link to="/perfil"><Button type="submit" value ="Submit"  size="lg" variant="outline-info">Regresar</Button></Link>
                                     </div>
                                 </ButtonToolbar >
                         </Form>
                 </div>
             )
         }
-    
+    }
 }
 
 export default AddTrabajos

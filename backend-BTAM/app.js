@@ -72,8 +72,6 @@ app.use('/', index);
 const trabajosRoutes = require ('./routes/trabajo-routes')
 app.use('/api', trabajosRoutes)
 
-// const perfilRoutes = require ('./routes/profile-route')
-// app.use('/api', perfilRoutes)
 
 const authRoutes =require ('./routes/auth-routes');
 app.use ('/api',authRoutes)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Col, Row, Button, Alert} from 'react-bootstrap'
+import {Col, Button} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 
@@ -7,75 +7,40 @@ class Dashbord extends Component {
     constructor(props){
         super(props)
         this.state={
-            show: true
+            
         }
     }
   
    
     render() {
-        const handleHide = () => this.setState({ show: false });
+      
    
         if(this.props.loggedInUser){
         return (
-            <div className="container">
-             <Alert show={this.state.show} variant="warning">
-                <Alert.Heading>MUY IMPORTANTE!!!</Alert.Heading>
-                <p>
-                Mantén actualizado tu perfil ya que a través de él, los reclutadores estarán en contacto contigo por lo que es muy importante si aún no los has llenado tomate unos minutos para hacerlo en la seccion de Curriculum  
-                </p>
-                <hr />
-                <div className="d-flex justify-content-end">
-                    <Button onClick={handleHide} variant="outline-warning">
-                    Cerrar
-                    </Button>
-                </div>
-            </Alert>
-
-        
-                        <div style={{marginTop:'30px'}}>
-                            <h1 style={{textAlign:"center"}}>Bienvenido {this.props.loggedInUser.nombre}</h1>
-                        </div>
-                <Row>
-                
+            <div className="container ">
+                  
+                 <div style={{marginTop:'30px'}}>
+                    <h1 style={{textAlign:"center"}}>Bienvenido {this.props.loggedInUser.nombre}</h1>
+                 </div>
                     <Col>
-                       
-                        <div>
-                            <Row ><img className="image-perfil"src={this.props.loggedInUser.imagen} alt="perfil"/></Row>
-                            <Row className="button-perfil">
-                                <Link to='/addperfil'><Button >Editar Foto</Button></Link>
-                            </Row>
-                        </div>
-                        <Row>
-                            <section>
-                                <h1>Encuentre Empleo </h1>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis praesentium aperiam maiores culpa nulla earum totam, consequuntur dolores voluptas nostrum voluptate ex labore unde a, doloribus quisquam dolore. Nulla, aut.</p>
-                                <Link to="/trabajos"><Button variant="info">Encuentre un empleo</Button></Link>
-                            
-                            </section>
-                        </Row>
-                    
-                    </Col>
-                    <Col className="">
-                        <Row>
-                        <section>
-                            <h1>Curriulum </h1>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nostrum perspiciatis repellat vitae fugiat, quis nam molestiae ex ullam perferendis! Delectus quisquam repudiandae ducimus rerum quis veritatis doloremque sint esse.
+                    <section >
+                            <h1>Actualiza tu Perfil</h1>
+                            <h3><b>¡MUY IMPORTANTE!</b></h3>
+                            <p>Actualiza tu perfil ya que es el medio mediante el cual los reclutadores estarán en contacto contigo.
                             </p>
-                            <Link to="/addperfil"><Button variant="info">Encuentre un empleo</Button></Link>
+                            <Link to="/addperfil"><Button size='lg' variant="info">Actualiza tu Perfil</Button></Link>
                         </section>
-                        </Row>
-                       
-                        <Row>
-                            <section>
-                                <h1>Agregar Empleo</h1>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, magnam veritatis voluptas voluptate perferendis corrupti nobis, assumenda sit repudiandae eveniet impedit dolore dolorum consequatur esse in modi eligendi odio. Dolore.</p>
-                                <Link to="/addtrabajo"><Button variant="info">Agrege un empleo</Button></Link>
-                            </section>
-                        </Row>
-                        
+                        <section>
+                             <h1>Encuentra Empleo </h1>
+                             <p>Aquí encontraras las ofertas de trabajo que hay actualmente revísalas y si encuentras alguna postúlate para enviar tus datos al reclutador. </p>
+                             <Link to="/trabajos"><Button size='lg' variant="info">Encuentra un empleo</Button></Link>
+                        </section>          
+                        <section>
+                                <h1>Agrega Empleo</h1>
+                                <p><b>¿Quieres ofrecer algún empleo? </b>entra en la siguiente sección para empezar a agregar empleos y estar en contacto con los interesados.</p>
+                                <Link to="/addtrabajo"><Button size='lg' variant="warning">Agrega un empleo</Button></Link>
+                        </section>
                     </Col>
-                </Row>
-                
             </div>
         );}
     }

@@ -20,18 +20,18 @@ router.post('/email', (req, res, next )=>{
   const mailOptions={
     
     to:      `${data.to}` ,
-    subject: `Me interesa la vacante ${data.subject}`,
-    html:    `<h1>Estoy interesado en la vacante ${data.puesto}</h1>
-              <h4>Mis Datos son:</h4>
-              <p>Nombre: ${data.nombre}</p>
-              <p>Apellido: ${data.apellido}</p>
-              <p>Edad: ${data.edad}</p>
-              <p>Descripción: ${data.descripcion}</p>
-              <p>Escolaridad: ${data.escolaridad}</p>
-              <p>Ultimo Trabajo: ${data. ultimoTrabajo}</p>
-              <p>Correo: ${data.username}</p>
-              <p>Telefono: ${data.telefono}</p>
-              <p>Información enviada desde Bolsa de Trabajo parat el adulto mayor</p>`
+    subject: `Se han postulado para la vacante de ${data.subject}`,
+    html:    `<h2> Se han postulado para la vacante de ${data.puesto} través de Bolsa de Trabajo para el Adulto Mayor</h2>
+              <h4>Los datos del interesado son:</h4>
+              <p><b>Nombre:</b> ${data.nombre}</p>
+              <p><b>Apellido:</b> ${data.apellido}</p>
+              <p><b>Edad:</b> ${data.edad}</p>
+              <p><b>Descripción:</b> ${data.descripcion}</p>
+              <p><b>Escolaridad:</b> ${data.escolaridad}</p>
+              <p><b>Ultimo </b>Trabajo: ${data. ultimoTrabajo}</p>
+              <p><b>Correo:</b> ${data.username}</p>
+              <p><b>Telefono:</b> ${data.telefono}</p>
+              <p><b>Información </b>enviada desde Bolsa de Trabajo para el Adulto Mayor</p>`
   
   }
   transporter.sendMail(mailOptions)

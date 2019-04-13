@@ -18,7 +18,6 @@ class SendEmail extends Component {
         .then (responseFromApi=>{
             const theUser = responseFromApi.data
             this.setState(theUser)
-            
         })
         .catch ((err)=>{
             console.log(err)
@@ -61,8 +60,7 @@ class SendEmail extends Component {
             withCredentials:true
         })
         .then(()=>{
-            console.log("mensaje enviado")
-            
+        console.log("mensaje enviado")
                     })
         .catch(error=> console.log(error))
     }
@@ -83,9 +81,9 @@ class SendEmail extends Component {
         render() {
         return (
             <div>
-                <h1>{this.state.username}</h1>
+                <h1>Estimado (a) {this.state.nombre}</h1>
             <Form onSubmit = {this.handleFormSubmit}>
-               <p> Se enviaran tus datos a la empresa {this.props.nomEmpresa}, para el puesto {this.props.puesto} ,  pulsa enviar si esta de acuerdo.</p>
+               <p> Se enviaran tus datos a la empresa {this.props.nomEmpresa}, para el puesto de {this.props.puesto} ,  pulsa enviar si esta de acuerdo.</p>
                <Modal.Footer>
                <Button  onClick={this.handleClick} state={this.state.sendState} bgColor="#28a745" bgLoading="#007bff" type="submit" value ="Submit">Enviar</Button>
                </Modal.Footer>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import AuthService from './auth-service'
 import {Link, Redirect} from 'react-router-dom'
-import {Form, Button, Col, Row} from 'react-bootstrap';
+import {Form, Button, Col, Row, ButtonToolbar} from 'react-bootstrap';
 import swal from 'sweetalert';
 
 class Signup extends Component {
@@ -13,7 +13,6 @@ class Signup extends Component {
                 nombre:"",
                 apellido:"",
                 isLoggedin: false
-               
             }
             this.service = new AuthService()
         }
@@ -64,7 +63,7 @@ class Signup extends Component {
                     <Row>
                         <Col xs={12} md={6}>
                         <div>
-                        <img style={{height:'92vh', width:'100%', overflow:'hidden'}} src="https://res.cloudinary.com/dzxpqumj0/image/upload/v1554767907/iStock-627779744.jpg" alt="img"/>
+                        <img style={{height:'94vh', width:'100%', overflow:'hidden'}} src="https://res.cloudinary.com/dzxpqumj0/image/upload/v1555132049/iStock-627779744.jpg" alt="img"/>
                         </div>
 
                         </Col>
@@ -74,11 +73,11 @@ class Signup extends Component {
                                 <Form.Row>
                                     <Form.Group as={Col} controlId="nombre">
                                         <Form.Label className='label'>Nombre</Form.Label>
-                                        <Form.Control size="lg" className="input" required name='nombre' value={this.state.nombre}type="text" placeholder="Ingrese su Nombre" onChange={e=> this.handleChange(e)}/>
+                                        <Form.Control size="lg" className="input" required name='nombre' value={this.state.nombre}type="text" placeholder="Ingresa su Nombre" onChange={e=> this.handleChange(e)}/>
                                     </Form.Group>
                                     <Form.Group as={Col} controlId="apellido">
                                         <Form.Label className='label'>Apellidos</Form.Label>
-                                        <Form.Control size="lg" className="input" name='apellido' value={this.state.apellido}type="text" placeholder="Ingrese sus Apellidos" onChange={e=> this.handleChange(e)}/>
+                                        <Form.Control size="lg" className="input" name='apellido' value={this.state.apellido}type="text" placeholder="Ingresa sus Apellidos" onChange={e=> this.handleChange(e)}/>
                                     </Form.Group>
                                 </Form.Row>
 
@@ -93,10 +92,19 @@ class Signup extends Component {
                                     <Form.Control  size="lg" className="input" required name='password' value={this.state.password}type="password" placeholder="Ingresa Contraseña" onChange={e=>this.handleChange(e)}/>
                                 </Form.Group>
                                 <br/>
-                            
-                                <Button className="input" variant="primary" type="submit" value="Signup">
-                                    Submit
+                                <ButtonToolbar >
+                                    <div>
+                                    <Button className="input" size="lg" variant="info" type="submit" value="Signup">
+                                    Enviar
                                 </Button>
+                                    </div>
+                                    <div className="button-det">
+                                    
+                                        <Link   className="link-botton" to={'/'}><Button className="input" size="lg" variant="outline-info">Regresar</Button></Link>
+                                    </div>
+                            </ButtonToolbar>
+                            
+                               
                                 <Form.Text className="text-muted">
                                 <br/>Ya tienes cuenta ingresa<Link to={"/login"}> aqui</Link>
                                 </Form.Text>

@@ -1,19 +1,16 @@
 const express       = require ('express')
 const authRoutes    = express.Router()
-
 const passport      = require ('passport')
 const bcrypt        = require('bcryptjs')
-
 const User          = require ('../models/User')
+const mongoose      = require('mongoose')
+mongoose.set('useFindAndModify', false);
 
 authRoutes.post ('/signup', (req, res, next)=>{
   const username = req.body.username
   const password = req.body.password
   const nombre = req.body.nombre
   const apellido = req.body.apellido
-  
-
-
 
   if(!username||!password){
     res.status(400).json({message:'proporciona username y password'})

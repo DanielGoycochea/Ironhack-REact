@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service'
 import {Link, Redirect} from 'react-router-dom'
-import {Button, Form, Row, Col, Container} from 'react-bootstrap';
+import {Button, Form, Row, Col, ButtonToolbar } from 'react-bootstrap';
 import swal from 'sweetalert';
 
 class Login extends Component {
@@ -24,6 +24,7 @@ class Login extends Component {
 
         this.service.login(username, password)
         .then(response=>{
+            
             this.setState({
                 username: '',
                 password: '',
@@ -34,7 +35,7 @@ class Login extends Component {
             swal("Inicio de Sesión", "Correctamente", "success");
             
         })
-        .catch( error => swal("Error", "verifique su correo y/o contraseña", "error"))
+        .catch( error => swal("Error", `verifique su correo y/o contraseña`, "error"))
             ;
     }
 
@@ -58,11 +59,12 @@ class Login extends Component {
             <Row>
                 <Col xs={12} md={6}>
                     <div >
-                        <img style={{height:'90vh', overflow:'hidden'}} className="image-login" src="https://res.cloudinary.com/dzxpqumj0/image/upload/v1554767848/iStock-522170875.jpg" alt="img"/>
+                        <img style={{height:'94vh', overflow:'hidden'}} className="image-login" src="https://res.cloudinary.com/dzxpqumj0/image/upload/v1555132438/iStock-522170875.jpg" alt="img"/>
                     </div>
                 </Col>
                 <Col xs={12} md={5} className="form-margin"> <h1>INICIA SESIÓN</h1><br/>
-                    <Container> 
+                   
+                   
                        
                     <Form onSubmit={this.handleFormSubmit} >
                    
@@ -76,17 +78,25 @@ class Login extends Component {
                                 <Form.Control required size="lg" className="input" name='password' value={this.state.password}type="password" placeholder="Ingresa tu Contraseña" onChange={e=>this.handleChange(e)}/>
                             </Form.Group>
                             <br/>
-                            <Button size="lg" className="input" variant="primary" type="submit" value="Login">
-                               Enviar
-                            </Button>
+                           
+                            <ButtonToolbar >
+                                    <div>
+                                    <Button size="lg" className="input" variant="info" type="submit" value="Login">
+                                        Enviar
+                                     </Button>
+                                    </div>
+                                    <div className="button-det">
+                                    
+                                        <Link   className="link-botton" to={'/'}><Button className="input" size="lg" variant="outline-info">Regresar</Button></Link>
+                                    </div>
+                            </ButtonToolbar> 
                             
                             <Form.Text className="text-muted "><br/>
                             Aun no tines cuenta registarte  <Link to={"/signup"}> Aquí</Link>
                             </Form.Text>
-                            
-
+           
                     </Form>
-                    </Container>
+                    
                 </Col>
              </Row>
             </div>
