@@ -24,7 +24,7 @@ class AddResume extends Component {
         const edad= this.state.edad
         const fechaNacimiento= this.state.fechaNacimiento
         const descripcion = this.state.descripcion
-        const escolaridad = ''
+        const escolaridad = this.state.escolaridad
         const profesion = this.state.profesion
         const ultimoTrabajo = this.state.ultimoTrabajo
         const telefono= this.state.telefono
